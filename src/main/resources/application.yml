@@ -1,0 +1,57 @@
+spring:
+    application.name: gsvaultconfig
+    cloud.vault:
+        token: myroot
+        authentication: TOKEN
+        uri: http://10.10.15.85:32006
+        connection-timeout: 5000
+        read-timeout: 15000
+        config.lifecycle.enabled: true
+        kv:
+            enabled: true
+            backend: secret
+        generic:
+          enabled: true
+          backend: secret
+        database:
+            enabled: true
+            role: order
+            backend: database
+        config:
+            order: -10
+        ssl:
+            trust-store: classpath:keystore.jks
+            trust-store-password: changeit
+    config.import: vault://
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://10.10.15.85:30393/orders
+        jpa:
+            hibernate:
+                ddl-auto: none
+            show-sql: true
+            database: postgresql
+            database-platform: org.hibernate.dialect.PostgreSQLDialect
+            open-in-view: false
+            generate-ddl: false
+            properties:
+                hibernate:
+                  temp:
+                    use_jdbc_metadata_defaults: false
+app.security.encryption.in-transit.key-name: order
+#logging:
+#  pattern:
+#    console: "%d %-5level %logger : %msg%n"
+#  level:
+#    org.springframework: INFO
+#    org.hibernate: INFO
+management:
+    endpoints:
+    web:
+        expose: ["health", "info", "refresh", "env"]
+    endpoint:
+    health:
+        show-details: ALWAYS
+server:
+    port: 8080
+    sessionTimeout: 30
