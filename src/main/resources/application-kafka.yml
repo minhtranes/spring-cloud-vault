@@ -1,0 +1,10 @@
+spring.cloud:
+    function.definition: processCustomer
+    stream:
+        default-binder: kafka
+        kafka.binder.brokers: 10.10.15.85:32092
+        bindings:
+            processCustomer-in-0:
+                group: researcher
+                destination: customers
+                content-type: application/json

@@ -1,4 +1,5 @@
 spring:
+    profiles.active: kafka
     application.name: gsvaultconfig
     cloud.vault:
         token: myroot
