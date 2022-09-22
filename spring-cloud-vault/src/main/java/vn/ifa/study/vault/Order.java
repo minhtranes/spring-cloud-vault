@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
+import vn.ifa.study.vault.database.TextEncryptDecryptConverter;
 
 @Entity
 @Table(name = "orders")

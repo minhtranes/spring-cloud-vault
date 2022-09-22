@@ -1,4 +1,4 @@
-package vn.ifa.study.vault;
+package vn.ifa.study.vault.database;
 
 import javax.persistence.AttributeConverter;
 
